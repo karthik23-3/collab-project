@@ -1,0 +1,76 @@
+//Multilevel Inheritance:
+
+import java.util.*;
+class Airtel
+{
+	static Scanner sc=new Scanner(System.in);
+	double recharge(int plan)
+	{
+		if(plan==1)
+		  return 199;
+		if(plan==2)
+		  return 299;
+		return 699;
+	}
+}
+
+class cellshop extends Airtel
+{
+	double bill=0;
+	
+	void plans()
+	{
+		System.out.println("un-calls,100sms,1/gb,28d-199rs");
+		System.out.println("un-calls,300sms,1.5/gb,54d-299rs");
+		System.out.println("un-calls,600sms,2.0/gb,90d-699rs");
+	}
+	
+	void billing()
+	{
+		System.out.println("Your recharge amount : "+bill);
+		System.out.println("tax : 4rs");
+		System.out.println("Total bill: "+(bill+4));
+	}
+	
+	void selection()
+	{
+		plans();
+		System.out.println("Choose your plan");
+		int plan=sc.nextInt();
+		if(plan>=1 && plan<=3)
+		{
+			bill=bill+recharge(plan);;
+			System.out.println("Recharge processed");
+		}
+		else
+		{
+			System.out.println("Invalid plan selection");
+		}
+
+		System.out.println("Press 1-to do another recharge/n 2 for billing or any key to exit");
+		char ch=sc.next().charAt(0);
+		if(ch=='1')
+		{
+			selection();
+		}
+		else if(ch=='2')
+		{
+			billing();
+		}
+		else
+		{
+			System.out.println("Thank you :)");
+		}
+	}
+}
+
+class User1 extends cellshop
+{
+	public static void main(String[] args)
+	{
+		new User1().selection();
+	}
+}	
+		
+		
+	

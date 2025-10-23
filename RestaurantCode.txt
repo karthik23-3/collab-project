@@ -1,0 +1,187 @@
+//Restaurant code using Hierarchial Inheritance.
+
+import java.util.*;
+class Restaurant
+{
+	static Scanner sc=new Scanner(System.in);
+	
+	double ChickenBiryani(int quantity)
+	{
+		return 199*quantity;
+	}
+
+	double MuttonBiryani(int quantity)
+	{
+		return 399*quantity;
+	}
+
+	double VegBiryani(int quantity)
+	{
+		return 160*quantity;
+	}
+}
+
+class Swiggy extends Restaurant
+{
+	double bill=0;
+	void menu()
+	{
+		System.out.println("1-ChickenBiryani -199rs");
+		System.out.println("2-MuttonBiryani -399rs");
+		System.out.println("3-VegBiryani -160rs");
+	}
+
+	void order()
+	{
+		menu();
+		System.out.println("select your Item:");
+		int item=sc.nextInt();
+		if(item>=1 && item<=3)
+		{
+			System.out.println("Enter quantity: ");
+			int quantity=sc.nextInt();
+			if(item==1)
+			{
+				bill=bill+ChickenBiryani(quantity);
+				System.out.println("Item added Chicken Biryani : "+quantity+" nos");
+			}
+			else if(item==2)
+			{
+				bill=bill+ChickenBiryani(quantity);
+				System.out.println("Item added Mutton Biryani : "+quantity+" nos");
+			}
+			else
+			{
+				bill=bill+ChickenBiryani(quantity);
+				System.out.println("Item added Veg Biryani : "+quantity+" nos");
+			}
+		}
+		else
+		{
+			System.out.println("Invalid choice");
+		}
+		System.out.println("1-To order more\n 2-billing\n any key to exist");
+		char ch=sc.next().charAt(0);
+		if(ch=='1')
+		{
+			order();
+		}
+		else if(ch=='2')
+		{
+			if(bill>0)
+			billing();
+			else
+                	System.out.println("No items selected");
+        	}
+        	else
+        	{
+            		System.out.println("Thank you visit again :)");
+        	}
+    	}
+	
+	void billing()
+	{
+		System.out.println("----Swiggy Bill----");
+		System.out.println("Your bill amount is : "+bill);
+		double gst=bill*0.18;
+		double disc=0;
+		if(bill>1000)
+			disc=bill*0.20;
+		System.out.println("Gst on ur bill :"+gst);
+		System.out.println("discount on ur bill : "+disc);
+		System.out.println("Total payable amount : "+(bill+gst-disc));
+	}
+}
+
+class Zomato extends Restaurant
+{
+	double bill=0;
+	void menu()
+	{
+		System.out.println("1-ChickenBiryani-199rs");
+		System.out.println("2-MuttonBiryani-399rs");
+		System.out.println("3-VegBiryani-160rs");
+	}
+	
+	void order()
+	{
+		menu();
+		System.out.println("Select your item : ");
+		int item=sc.nextInt();
+		if(item>=1 && item<=3)
+		{
+			System.out.println("Enter quantity : ");
+			int quantity=sc.nextInt();
+			if(item==1)
+			{
+				bill=bill+ChickenBiryani(quantity);
+				System.out.println("Item added to ChickenBiryani : "+quantity+" nos");
+			}
+			else if(item==2)
+			{
+				bill=bill+MuttonBiryani(quantity);
+				System.out.println("Item added to MuttonBiryani : "+quantity+" nos");
+			}
+			else
+			{
+				bill=bill+VegBiryani(quantity);
+				System.out.println("Item added to VegBiryani :"+quantity+" nos");
+			}
+		}
+		else
+		{
+			System.out.println("Invalid choice");
+		}
+		System.out.println("1 -To order More\n2-Biiling\n any key to exist");
+		char ch=sc.next().charAt(0);
+		if(ch=='1')
+		{
+			order();
+		}
+		else if(ch=='2')
+		{
+			if(bill>0)
+			billing();
+			else
+				System.out.println("No Items selected");
+		}
+		else
+		{
+			System.out.println("Thank you visit again :) ");
+		}
+	}
+	void billing()
+    	{
+		System.out.println("----Zomato bill----");
+        	System.out.println("Your bill amount : "+bill);
+        	double gst=bill*0.15;
+        	System.out.println("Gst on bill : "+gst);
+        	double disc=0;
+        	if(bill>2000)
+            		disc=bill*0.20;
+        	System.out.println("Discount on bill : "+disc);
+        	System.out.println("Total payable amout : "+(bill+gst-disc));
+    }
+}
+
+public class User2
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("1 - Swiggy\n2 - Zomato");
+		int n=Restaurant.sc.nextInt();
+		if(n==1)
+		{
+		    new Swiggy().order();
+		}
+		else if(n==2)
+		{
+		    new Zomato().order();
+		}
+		else
+		{
+		    System.out.println("Invalid platform select valid one ");
+		    main(null);
+		}
+	}
+}
