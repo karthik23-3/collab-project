@@ -1,0 +1,46 @@
+//Q. contains an 1-instance variable and a static and non-static method then inherit this into another class which contains 1-Instance variable and a non static method then invoke all this properties under main of derived class by providing dynamic inputs?
+
+import java.util.Scanner;
+
+class App
+{
+	static Scanner sc = new Scanner(System.in);
+	String s = sc.nextInt();
+
+	static int M1(long l)
+	{
+		System.out.println("M1");
+		System.out.println(l);
+
+		return sc.nextInt();
+	}
+	byte M2(int a)
+	{
+		System.out.println("M2");
+		System.out.println(a);
+
+		return sc.nextByte();
+	}
+}
+
+
+class App1 extends App
+{
+	boolean b = sc.nextBoolean();
+	
+	String M3(int a)
+	{
+		System.out.println("M1");
+		System.out.println(a);
+		
+		return sc.next();
+	}
+	public static void main(String[]args)
+	{
+		System.out.println(App.M1(sc.nextLong()));
+		App1 x = new App1();
+		System.out.println(x.M2(sc.nextInt()));
+		System.out.println(x.M3(sc.nextInt()));
+
+	}
+}

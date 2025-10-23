@@ -1,0 +1,49 @@
+//Hirerchial Inheritance 
+
+import java.util.*;
+
+class A
+{
+	static Scanner sc = new Scanner(System.in);
+	static int M1(float a)
+	{
+		System.out.println(a);
+		return sc.nextInt();
+	}
+	String M2(int a)
+	{
+		System.out.println(a);
+		return sc.next();
+	}
+}
+
+class B extends A
+{
+	long M3(short a)
+	{
+		System.out.println(a);
+		return sc.nextShort();
+	}
+}
+
+class C extends A
+{
+	boolean M4(char a)
+	{
+		System.out.println(a);
+		return sc.nextBoolean();
+	}
+}
+
+class D
+{
+	public static void main(String[]args)
+	{
+		System.out.println(A.M1(A.sc.nextFloat()));
+		B x = new B();
+		System.out.println(x.M2(A.sc.nextInt()));
+		System.out.println(x.M3(A.sc.nextShort()));
+		C x1 = new C();
+		System.out.println(x1.M4(A.sc.next.CharAt(0)));
+	}
+}

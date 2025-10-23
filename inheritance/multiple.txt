@@ -1,0 +1,65 @@
+import java.util.Scanner;
+class Airtel 
+{
+	static Scanner sc = new Scanner(System.in);
+	double recharge(int plan)
+	{
+		if(plan==1)
+		return 199;
+		if(plan==2)
+		return 299;
+		
+	     return 699;
+	}
+}
+
+class Cellshop extends Airtel
+{
+	double bill = 0;
+
+	void plans()
+	{
+		System.out.println("1-unlimited calls 100sms, 1.5-gb data, 24-days" );
+		System.out.println("2-unlimited calls 300sms, 2-gb data, 28-days");
+		System.out.println("3-unlimited calls 800sms, 2.5-gb data, 55-days");
+	}
+	
+	void billing()
+	{
+		System.out.println("your reacharge amount: "+bill);
+		System.out.println("tax: 4rs");
+		System.out.println("total bill:"+(bill+4));
+	}
+	void selection()
+	{
+		System.out.println("choose your plan");
+		plans();
+		
+		int plans = sc.nextInt();
+		if(plans>=1 && plans<=3)
+		{
+			bill = bill+recharge(plans);
+			System.out.println("recharge processed ");
+		}
+		else
+		{
+			System.out.println("invalid plan selection.");
+		}
+		System.out.println("press-1 to another recagre/n2 biliing or any key to exit:");
+		char ch = sc.next().charAt(0);
+		if(ch=='1')
+		selection();
+		else if(ch=='2')
+		billing();
+		else
+		System.out.println("thanku");
+	}
+}
+	
+class User extends Cellshop
+{
+	public static void main(String[]args)
+	{
+		new User().selection();
+	}
+}
